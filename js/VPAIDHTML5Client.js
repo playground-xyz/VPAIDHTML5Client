@@ -217,13 +217,14 @@ function $throwIfDestroyed() {
     }
 }
 
-function getOrigin() {
-    var _location = window.parent.location;
-    return _location.origin || (
+function getOrigin(win) {
+    var _location = window.top.location;
+    var origin = _location.origin || (
         _location.protocol + '//' +
         _location.hostname +
         (_location.port ? ':' + _location.port: '')
     );
+    return origin;
 }
 
 module.exports = VPAIDHTML5Client;
